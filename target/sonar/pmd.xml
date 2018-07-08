@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset>
+  <rule ref="rulesets/java/design.xml/SingletonClassReturningNewInstance">
+    <priority>3</priority>
+    <properties>
+      <property name="violationSuppressRegex" value="" />
+      <property name="violationSuppressXPath" value="" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/UseProperClassLoader">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/java/android.xml/DoNotHardCodeSDCard">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/android.xml/CallSuperFirst">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/DoNotUseThreads">
+    <priority>1</priority>
+  </rule>
+  <rule ref="rulesets/java/unnecessary.xml/UnusedNullCheckInEquals">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/optimizations.xml/UseStringBufferForStringAppends">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/MDBAndSessionBeanNamingConvention">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/controversial.xml/SuspiciousOctalEscape">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/basic.xml/DontUseFloatTypeForLoopIndices">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/imports.xml/UnnecessaryFullyQualifiedName">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/strings.xml/InefficientEmptyStringCheck">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/SimpleDateFormatNeedsLocale">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/EmptyMethodInAbstractClassShouldBeAbstract">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/LocalHomeNamingConvention">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/basic.xml/AvoidBranchingStatementAsLastInLoop">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/optimizations.xml/UseArraysAsList">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/BadComparison">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/StaticEJBFieldShouldBeFinal">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/android.xml/CallSuperLast">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/UseVarargs">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/clone.xml/CloneMethodMustBePublic">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/RemoteInterfaceNamingConvention">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/SingleMethodSingleton">
+    <priority>2</priority>
+    <properties>
+      <property name="violationSuppressRegex" value="" />
+      <property name="violationSuppressXPath" value="" />
+    </properties>
+  </rule>
+  <rule ref="rulesets/java/controversial.xml/AvoidUsingNativeCode">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/strings.xml/InefficientStringBuffering">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/basic.xml/BigIntegerInstantiation">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/strings.xml/InsufficientStringBufferDeclaration">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/OptimizableToArrayCall">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/AccessorClassGeneration">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/LocalInterfaceSessionNamingConvention">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/basic.xml/AvoidThreadGroup">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/java/strings.xml/ConsecutiveAppendsShouldReuse">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/j2ee.xml/RemoteSessionInterfaceNamingConvention">
+    <priority>3</priority>
+  </rule>
+  <rule ref="rulesets/java/design.xml/MissingStaticMethodInNonInstantiatableClass">
+    <priority>3</priority>
+  </rule>
+</ruleset>
+

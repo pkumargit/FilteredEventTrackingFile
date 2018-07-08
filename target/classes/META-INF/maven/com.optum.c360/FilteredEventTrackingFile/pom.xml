@@ -1,0 +1,177 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.optum.c360</groupId>
+	<artifactId>FilteredEventTrackingFile</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>FilteredEventTrackingFile</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<hadoop.version>2.7.0</hadoop.version>
+		<java.version>1.8</java.version>
+		<powermock.version>1.6.4</powermock.version>
+		<!-- Sonar related properties START -->
+               <sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
+               <sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
+               <sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
+
+               <sonar.sources>src/main</sonar.sources>
+               <sonar.tests>src/test</sonar.tests>
+               <!-- Below property indicates the pattern of the test suite -->
+               <runSuite>**/*.class</runSuite>
+               <!-- Sonar-JaCoCo properties -->
+               <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+               <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+               <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+               <sonar.language>java</sonar.language>
+               <sonar.exclusions>**/snapshot/**,**/addressstandardization/**</sonar.exclusions>
+               <sonar.coverage.exclusions>**/snapshot/**,**/addressstandardization/**</sonar.coverage.exclusions>
+               <!-- Sonar related properties END -->
+		
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common</artifactId>
+			<version>${hadoop.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>jdk.tools</groupId>
+					<artifactId>jdk.tools</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>${hadoop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-core</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.mrunit</groupId>
+			<artifactId>mrunit</artifactId>
+			<version>1.1.0</version>
+			<classifier>hadoop2</classifier>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>cobertura-maven-plugin</artifactId>
+               <version>2.7</version>
+               <configuration>
+               <instrumentation>
+               <includes>
+               <include>com/**/*.class</include>
+               </includes>
+               <excludes>
+               <exclude>com/**/snapshot/*.class</exclude>
+               <exclude>com/**/addressstandardization/*.class</exclude>
+               <exclude>com/**/lr/*.class</exclude>
+               </excludes>
+               </instrumentation>
+               </configuration>
+               <executions>
+               <execution>
+               <id>clean</id>
+               <phase>pre-site</phase>
+               <goals>
+               <goal>clean</goal>
+               </goals>
+               </execution>
+               <execution>
+               <id>instrument</id>
+               <phase>site</phase>
+               <goals>
+               <goal>instrument</goal>
+               <goal>cobertura</goal>
+               </goals>
+               </execution>
+               </executions>
+               </plugin>
+               <!-- Sonar related plugin START -->
+               <!-- Below plugin ensures the execution of test cases during maven build -->
+               <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <configuration>
+               <includes>
+               <include>${runSuite}</include>
+               </includes>
+               <excludes>
+               <exclude>**/addressstandardization/**</exclude>
+               <exclude>**/snapshot/**</exclude>
+               <exclude>**/lr/**</exclude>
+               </excludes>
+               </configuration>
+               </plugin>
+
+               <!-- Sonar-JaCoCo integration plugin -->
+               <plugin>
+               <groupId>org.jacoco</groupId>
+               <artifactId>jacoco-maven-plugin</artifactId>
+               <version>0.7.6.201602180812</version>
+               <configuration>
+               <destFile>${sonar.jacoco.reportPath}</destFile>
+               <append>true</append>
+               </configuration>
+               <executions>
+               <execution>
+               <id>agent</id>
+               <goals>
+               <goal>prepare-agent</goal>
+               </goals>
+               </execution>
+               </executions>
+               </plugin>
+               <!-- Sonar related plugin END -->
+			
+
+		</plugins>
+	</build>
+</project>

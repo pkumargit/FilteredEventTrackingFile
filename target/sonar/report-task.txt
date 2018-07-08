@@ -1,0 +1,6 @@
+projectKey=com.optum.c360:FilteredEventTrackingFile
+serverUrl=http://sonar.optum.com
+serverVersion=6.7.1.35068
+dashboardUrl=http://sonar.optum.com/dashboard/index/com.optum.c360:FilteredEventTrackingFile
+ceTaskId=AWRvRE94085cwlWvKIBj
+ceTaskUrl=http://sonar.optum.com/api/ce/task?id=AWRvRE94085cwlWvKIBj
